@@ -77,7 +77,7 @@ describe('School', () => {
     expect(school.roster()).toEqual(expectedDb);
   });
 
-  xtest("a student can't be in two different grades", () => {
+  xtest('a student can be moved to a different grade but can only belong to one grade at a time', () => {
     school.add('Aimee', 2);
     school.add('Aimee', 1);
 
