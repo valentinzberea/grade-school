@@ -1,38 +1,34 @@
-# Instructions
+# Grade School Roster
 
-Given students' names along with the grade that they are in, create a roster
-for the school.
+## Instructions
 
-In the end, you should be able to:
+Implement a `GradeSchool` class that manages a school roster (student database). Students are organized by grade level, and within each grade, students should be sorted alphabetically.
 
-- Add a student's name to the roster for a grade
-  - "Add Jim to grade 2."
-  - "OK."
-- Get a list of all students enrolled in a grade
-  - "Which students are in grade 2?"
-  - "We've only got Jim just now."
-- Get a sorted list of all students in all grades. Grades should sort
-  as 1, 2, 3, etc., and students within a grade should be sorted
-  alphabetically by name.
-  - "Who all is enrolled in school right now?"
-  - "Let me think. We have
-    Anna, Barb, and Charlie in grade 1,
-    Alex, Peter, and Zoe in grade 2
-    and Jim in grade 5.
-    So the answer is: Anna, Barb, Charlie, Alex, Peter, Zoe and Jim"
+## Required Methods
 
-Note that all our students only have one name. (It's a small town, what
-do you want?)
+### `add` 
+Add a student to the specified grade.
 
-## For bonus points
+### `grade`
+Return an array of all students in the specified grade, sorted alphabetically.
 
-Did you get the tests passing and the code clean? If you want to, these
-are some additional things you could try:
+### `roster`
+Return an object representing the complete school roster. Keys are grade numbers, values are arrays of student names
 
-- If you're working in a language with mutable data structures and your
-  implementation allows outside code to mutate the school's internal DB
-  directly, see if you can prevent this. Feel free to introduce additional
-  tests.
+## Example Usage
 
-Then please share your thoughts in a comment on the submission. Did this
-experiment make the code better? Worse? Did you learn anything from it?
+```javascript
+const school = new GradeSchool();
+
+school.add('Jim', 2);           // Add Jim to grade 2
+school.add('Alice', 1);         // Add Alice to grade 1
+school.add('Bob', 2);           // Add Bob to grade 2
+
+school.grade(2);                // Returns: ['Bob', 'Jim']
+school.grade(1);                // Returns: ['Alice'] 
+school.grade(3);                // Returns: []
+
+school.roster();                // Returns: { 1: ['Alice'], 2: ['Bob', 'Jim'] }
+```
+
+Note: All students have single names only (it's a small town!).
