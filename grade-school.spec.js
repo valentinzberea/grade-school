@@ -62,6 +62,13 @@ describe('School', () => {
     expect(school.roster()).toEqual(expectedSortedStudents);
   });
 
+  xtest('a student can be moved to a different grade but can only belong to one grade at a time', () => {
+    school.add('Aimee', 2);
+    school.add('Aimee', 1);
+
+    expect(school.grade(2)).toEqual([]);
+  });
+
   xtest('roster cannot be modified outside of module', () => {
     school.add('Aimee', 2);
     const roster = school.roster();
@@ -75,12 +82,5 @@ describe('School', () => {
     school.grade(2).push('Oops.');
     const expectedDb = { 2: ['Aimee'] };
     expect(school.roster()).toEqual(expectedDb);
-  });
-
-  xtest('a student can be moved to a different grade but can only belong to one grade at a time', () => {
-    school.add('Aimee', 2);
-    school.add('Aimee', 1);
-
-    expect(school.grade(2)).toEqual([]);
   });
 });
